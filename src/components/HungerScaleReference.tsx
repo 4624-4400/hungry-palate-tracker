@@ -27,19 +27,19 @@ export const HungerScaleReference: React.FC = () => {
           <div className="text-sm text-gray-700">Starting to feel hungry</div>
         </div>
         
-        <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-green-100 to-emerald-100 rounded-lg border-2 border-green-300">
+        <div className="flex items-center space-x-3 p-3 bg-white rounded-lg border border-green-200">
           <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white font-bold text-sm">5</div>
-          <div className="text-sm font-semibold text-green-800">Neutral, not hungry or full</div>
+          <div className="text-sm text-gray-700">Neutral, not hungry or full</div>
         </div>
         
-        <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-green-100 to-emerald-100 rounded-lg border-2 border-green-300">
+        <div className="flex items-center space-x-3 p-3 bg-white rounded-lg border border-green-200">
           <div className="w-8 h-8 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-sm">6</div>
-          <div className="text-sm font-semibold text-green-800">Slightly full, pleasantly satisfied</div>
+          <div className="text-sm text-gray-700">Slightly full, pleasantly satisfied</div>
         </div>
         
-        <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-green-100 to-emerald-100 rounded-lg border-2 border-green-300">
+        <div className="flex items-center space-x-3 p-3 bg-white rounded-lg border border-green-200">
           <div className="w-8 h-8 rounded-full bg-green-700 flex items-center justify-center text-white font-bold text-sm">7</div>
-          <div className="text-sm font-semibold text-green-800">Full and satisfied</div>
+          <div className="text-sm text-gray-700">Full and satisfied</div>
         </div>
         
         <div className="flex items-center space-x-3 p-3 bg-white rounded-lg border border-green-200">

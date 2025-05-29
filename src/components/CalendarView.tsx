@@ -37,8 +37,8 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ entries }) => {
   };
 
   return (
-    <Card className="bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200">
-      <CardHeader className="bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-t-lg">
+    <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
+      <CardHeader className="bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-t-lg">
         <div className="flex items-center justify-between">
           <CardTitle className="text-xl">Weekly Hunger Tracking</CardTitle>
           <div className="flex items-center space-x-2">
@@ -53,7 +53,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ entries }) => {
             </Button>
           </div>
         </div>
-        <div className="text-center text-purple-100">
+        <div className="text-center text-green-100">
           {format(weekDays[0], 'MMM d')} - {format(weekDays[6], 'MMM d, yyyy')}
         </div>
       </CardHeader>
@@ -66,10 +66,10 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ entries }) => {
               <div key={day.toISOString()} className={`min-h-[140px] border-2 rounded-xl p-3 ${
                 isToday 
                   ? 'bg-gradient-to-br from-yellow-100 to-orange-100 border-orange-300 shadow-lg' 
-                  : 'bg-white border-purple-200 hover:border-purple-300 transition-colors'
+                  : 'bg-white border-green-200 hover:border-green-300 transition-colors'
               }`}>
                 <div className={`text-sm font-bold mb-2 text-center ${
-                  isToday ? 'text-orange-700' : 'text-purple-700'
+                  isToday ? 'text-orange-700' : 'text-green-700'
                 }`}>
                   <div>{format(day, 'EEE')}</div>
                   <div className="text-lg">{format(day, 'd')}</div>
