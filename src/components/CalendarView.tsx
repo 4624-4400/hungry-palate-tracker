@@ -65,11 +65,11 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ entries }) => {
             return (
               <div key={day.toISOString()} className={`min-h-[140px] border-2 rounded-xl p-3 ${
                 isToday 
-                  ? 'bg-gradient-to-br from-yellow-100 to-orange-100 border-orange-300 shadow-lg' 
+                  ? 'bg-gradient-to-br from-green-100 to-green-200 border-green-400 shadow-lg' 
                   : 'bg-white border-green-200 hover:border-green-300 transition-colors'
               }`}>
                 <div className={`text-sm font-bold mb-2 text-center ${
-                  isToday ? 'text-orange-700' : 'text-green-700'
+                  isToday ? 'text-green-800' : 'text-green-700'
                 }`}>
                   <div>{format(day, 'EEE')}</div>
                   <div className="text-lg">{format(day, 'd')}</div>
