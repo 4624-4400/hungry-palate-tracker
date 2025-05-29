@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { HungerTrackingForm } from '@/components/HungerTrackingForm';
 import { CalendarView } from '@/components/CalendarView';
 import { DownloadButton } from '@/components/DownloadButton';
+import { HungerScaleReference } from '@/components/HungerScaleReference';
 import { Button } from '@/components/ui/button';
 
 export interface MealEntry {
@@ -46,26 +47,36 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-6xl mx-auto p-4">
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-orange-100">
+      <div className="max-w-7xl mx-auto p-4">
         <header className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Hunger Level Tracker</h1>
-          <p className="text-gray-600">Monitor your hunger levels before and after meals</p>
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-3">
+            Hunger Level Tracker
+          </h1>
+          <p className="text-gray-600 text-lg">Monitor your hunger levels before and after meals</p>
         </header>
 
-        <div className="flex justify-center mb-6">
-          <div className="flex bg-white rounded-lg shadow-sm border">
+        <div className="flex justify-center mb-8">
+          <div className="flex bg-white rounded-xl shadow-lg border-2 border-purple-200 overflow-hidden">
             <Button
               variant={currentView === 'form' ? 'default' : 'ghost'}
               onClick={() => setCurrentView('form')}
-              className="rounded-r-none"
+              className={`rounded-none px-6 py-3 font-semibold ${
+                currentView === 'form' 
+                  ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700' 
+                  : 'text-purple-600 hover:bg-purple-50'
+              }`}
             >
               Add Entry
             </Button>
             <Button
               variant={currentView === 'calendar' ? 'default' : 'ghost'}
               onClick={() => setCurrentView('calendar')}
-              className="rounded-l-none"
+              className={`rounded-none px-6 py-3 font-semibold ${
+                currentView === 'calendar' 
+                  ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700' 
+                  : 'text-purple-600 hover:bg-purple-50'
+              }`}
             >
               View Calendar
             </Button>
@@ -73,12 +84,19 @@ const Index = () => {
         </div>
 
         {currentView === 'form' ? (
-          <HungerTrackingForm onSubmit={addMealEntry} />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+              <HungerTrackingForm onSubmit={addMealEntry} />
+            </div>
+            <div>
+              <HungerScaleReference />
+            </div>
+          </div>
         ) : (
           <CalendarView entries={mealEntries} />
         )}
 
-        <div className="fixed bottom-4 right-4">
+        <div className="fixed bottom-6 right-6">
           <DownloadButton entries={mealEntries} />
         </div>
       </div>

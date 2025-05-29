@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
@@ -44,9 +43,8 @@ export const DownloadButton: React.FC<DownloadButtonProps> = ({ entries }) => {
   return (
     <Button
       onClick={downloadData}
-      variant="outline"
       size="sm"
-      className="bg-white shadow-lg border-gray-300 hover:bg-gray-50"
+      className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white shadow-lg border-0 font-semibold px-4 py-2"
     >
       <Download className="h-4 w-4 mr-2" />
       Download Data
