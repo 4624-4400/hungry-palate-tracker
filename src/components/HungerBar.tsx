@@ -11,8 +11,8 @@ export const HungerBar: React.FC<HungerBarProps> = ({ level, size = 'medium' }) 
   const getBarColor = (level: number) => {
     if (level <= 2) return 'bg-gradient-to-r from-red-500 to-red-600';
     if (level <= 4) return 'bg-gradient-to-r from-orange-500 to-yellow-500';
-    if (level <= 6) return 'bg-gradient-to-r from-green-500 to-emerald-500';
-    if (level <= 8) return 'bg-gradient-to-r from-blue-500 to-cyan-500';
+    if (level <= 7) return 'bg-gradient-to-r from-green-500 to-emerald-500';
+    if (level <= 9) return 'bg-gradient-to-r from-blue-500 to-cyan-500';
     return 'bg-gradient-to-r from-purple-500 to-pink-500';
   };
 
