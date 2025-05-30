@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 export const HungerScaleReference: React.FC = () => {
@@ -34,7 +33,7 @@ export const HungerScaleReference: React.FC = () => {
         
         <div className="flex items-center space-x-3 p-3 bg-white rounded-lg border border-green-200">
           <div className="w-8 h-8 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-sm">6</div>
-          <div className="text-sm text-gray-700">No longer hungry. You sense food in your belly, bu you could definitely eat more.</div>
+          <div className="text-sm text-gray-700">No longer hungry. You sense food in your belly, but you could definitely eat more.</div>
         </div>
         
         <div className="flex items-center space-x-3 p-3 bg-white rounded-lg border border-green-200">
