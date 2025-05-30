@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { HungerTrackingForm } from '@/components/HungerTrackingForm';
 import { CalendarView } from '@/components/CalendarView';
 import { DownloadButton } from '@/components/DownloadButton';
+import { UploadButton } from '@/components/UploadButton';
 import { HungerScaleReference } from '@/components/HungerScaleReference';
 import { Button } from '@/components/ui/button';
 
@@ -44,6 +45,20 @@ const Index = () => {
     };
     setMealEntries(prev => [...prev, newEntry]);
     setCurrentView('calendar');
+  };
+
+  const updateMealEntry = (updatedEntry: MealEntry) => {
+    setMealEntries(prev => 
+      prev.map(entry => entry.id === updatedEntry.id ? updatedEntry : entry)
+    );
+  };
+
+  const deleteMealEntry = (entryId: string) => {
+    setMealEntries(prev => prev.filter(entry => entry.id !== entryId));
+  };
+
+  const uploadMealEntries = (newEntries: MealEntry[]) => {
+    setMealEntries(prev => [...prev, ...newEntries]);
   };
 
   return (
@@ -93,10 +108,15 @@ const Index = () => {
             </div>
           </div>
         ) : (
-          <CalendarView entries={mealEntries} />
+          <CalendarView 
+            entries={mealEntries} 
+            onUpdateEntry={updateMealEntry}
+            onDeleteEntry={deleteMealEntry}
+          />
         )}
 
-        <div className="fixed bottom-6 right-6">
+        <div className="fixed bottom-6 right-6 flex space-x-3">
+          <UploadButton onUpload={uploadMealEntries} />
           <DownloadButton entries={mealEntries} />
         </div>
       </div>
