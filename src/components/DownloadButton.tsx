@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
@@ -29,47 +28,16 @@ export const DownloadButton: React.FC<DownloadButtonProps> = ({ entries }) => {
       ].join(','))
     ].join('\n');
 
-    // Create blob and trigger Save As dialog
+    // Create and download file
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     const url = URL.createObjectURL(blob);
     link.setAttribute('href', url);
     link.setAttribute('download', `hunger-tracking-data-${new Date().toISOString().split('T')[0]}.csv`);
-    
-    // Show Save As dialog by not setting the download attribute initially
-    link.removeAttribute('download');
-    link.target = '_blank';
     link.style.visibility = 'hidden';
     document.body.appendChild(link);
-    
-    // Use showSaveFilePicker if available (newer browsers), otherwise fall back to traditional method
-    if ('showSaveFilePicker' in window) {
-      (window as any).showSaveFilePicker({
-        suggestedName: `hunger-tracking-data-${new Date().toISOString().split('T')[0]}.csv`,
-        types: [{
-          description: 'CSV files',
-          accept: { 'text/csv': ['.csv'] },
-        }],
-      }).then((fileHandle: any) => {
-        return fileHandle.createWritable();
-      }).then((writable: any) => {
-        return writable.write(csvContent);
-      }).then((writable: any) => {
-        return writable.close();
-      }).catch((err: any) => {
-        // User cancelled or error occurred, fall back to regular download
-        console.log('Save picker cancelled or failed, using fallback');
-        link.setAttribute('download', `hunger-tracking-data-${new Date().toISOString().split('T')[0]}.csv`);
-        link.click();
-      });
-    } else {
-      // Fallback for browsers that don't support showSaveFilePicker
-      link.setAttribute('download', `hunger-tracking-data-${new Date().toISOString().split('T')[0]}.csv`);
-      link.click();
-    }
-    
+    link.click();
     document.body.removeChild(link);
-    URL.revokeObjectURL(url);
   };
 
   return (
