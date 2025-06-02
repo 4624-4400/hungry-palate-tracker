@@ -56,6 +56,11 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ entries, onUpdateEnt
     });
   };
 
+  const getTotalCaloriesForDay = (day: Date) => {
+    const dayEntries = getEntriesForDay(day);
+    return dayEntries.reduce((total, entry) => total + entry.calories, 0);
+  };
+
   const handleEntryClick = (entry: MealEntry) => {
     setSelectedEntry(entry);
     setIsDialogOpen(true);
@@ -90,6 +95,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ entries, onUpdateEnt
             <div className="flex space-x-4" style={{ width: `${allDays.length * 200}px` }}>
               {allDays.map(day => {
                 const dayEntries = getEntriesForDay(day);
+                const totalCalories = getTotalCaloriesForDay(day);
                 const isToday = isSameDay(day, today);
                 return (
                   <div 
@@ -103,9 +109,19 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ entries, onUpdateEnt
                     <div className={`text-sm font-bold mb-2 text-center ${
                       isToday ? 'text-green-800' : 'text-green-700'
                     }`}>
-                      <div>{format(day, 'EEE')}</div>
-                      <div className="text-lg">{format(day, 'd')}</div>
-                      <div className="text-xs">{format(day, 'MMM')}</div>
+                      <div className="flex justify-between items-center">
+                        <div className="flex-1">
+                          <div>{format(day, 'EEE')}</div>
+                          <div className="text-lg">{format(day, 'd')}</div>
+                          <div className="text-xs">{format(day, 'MMM')}</div>
+                        </div>
+                        {totalCalories > 0 && (
+                          <div className="text-xs text-right">
+                            <div className="font-bold text-blue-600">{totalCalories}</div>
+                            <div className="text-blue-500">kcal</div>
+                          </div>
+                        )}
+                      </div>
                     </div>
                     
                     {dayEntries.length > 0 ? (
