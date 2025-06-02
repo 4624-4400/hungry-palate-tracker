@@ -106,19 +106,19 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ entries, onUpdateEnt
                         : 'bg-white border-green-200 hover:border-green-300 transition-colors'
                     }`}
                   >
-                    <div className={`text-sm font-bold mb-2 text-center ${
+                    <div className={`text-sm font-bold mb-2 ${
                       isToday ? 'text-green-800' : 'text-green-700'
                     }`}>
-                      <div className="flex justify-between items-center">
-                        <div className="flex-1">
+                      <div className="flex justify-between items-start">
+                        <div className="text-left">
                           <div>{format(day, 'EEE')}</div>
                           <div className="text-lg">{format(day, 'd')}</div>
                           <div className="text-xs">{format(day, 'MMM')}</div>
                         </div>
                         {totalCalories > 0 && (
                           <div className="text-xs text-right">
-                            <div className="font-bold text-blue-600">{totalCalories}</div>
-                            <div className="text-blue-500">kcal</div>
+                            <div className="font-bold text-green-800">{totalCalories}</div>
+                            <div className="text-green-700">kcal</div>
                           </div>
                         )}
                       </div>
